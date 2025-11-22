@@ -14,12 +14,29 @@ import java.util.ArrayList;
 
 public class GeminiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<DataItem> list;
+    private ArrayList<DataItem> list = new ArrayList<>();
+
+
 
     public void setList(ArrayList<DataItem> items){
+        list.clear();
         list = items;
-        notifyDataSetChanged();
+
     }
+
+    public void addItem(ArrayList<DataItem> items){
+        //list.add(items);
+        list = items;
+        notifyItemInserted(list.size() - 1);
+    }
+
+    public void RemoveItem(DataItem[] items){
+        //list.add(items);
+        list.remove(items.length);
+        //notifyItemInserted(list.size() - 1);
+    }
+
+
 
     @NonNull
     @Override
@@ -53,8 +70,8 @@ public class GeminiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             DataItem getItem = items.get(position);
 
-            textView.setText(getItem.name);
-            imageView.setImageResource(getItem.src);
+            textView.setText(getItem.getName());
+            imageView.setImageResource(getItem.getSrc());
         }
 
     }

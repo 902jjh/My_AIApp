@@ -1,9 +1,31 @@
 package com.seoul.myai;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import kotlin.reflect.KProperty;
+
+@Entity(tableName = "table")
 public class DataItem {
 
-    int src;
-    String name;
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+
+    private int src;
+    private String name;
+
+
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return  id;
+    }
 
     public int getSrc() {
         return src;
